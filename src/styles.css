@@ -1,0 +1,35 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.header-container {
+  display: flex;
+}
+
+.header {
+  padding: 10px;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.display-form {
+  display: flex;
+  padding: 10px;
+  border: 1px solid black;
+  height: 200px;
+}
+
+.settings {
+  display: flex;
+}
+
+.dark {
+  background-color: #333;
+  color: #fff;
+}
+
+.light {
+  background-color: #fff;
+  color: #000;
+}
