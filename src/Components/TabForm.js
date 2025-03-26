@@ -11,7 +11,8 @@ export default TabForm = () => {
     interest: ["cricket", "football", "react"],
     theme: "dark",
   });
-
+  const [errorMessage, setErrorMessage] = useState({});
+  const [showError, setShowError] = useState(false);
   const tabs = [
     {
       name: "Profile",
@@ -26,16 +27,25 @@ export default TabForm = () => {
       component: Settings,
     },
   ];
+  console.log(errorMessage[tabs[activeTab].name]);
+  const onClickHandler = (index) => {
+    if (!errorMessage[tabs[activeTab].name]) {
+      setActiveTab(index);
+      setShowError(false);
+    } else {
+      setShowError(true);
+    }
+  };
 
   const ActiveTabComponent = tabs[activeTab].component;
-  console.log(appData);
+  console.log(errorMessage);
 
   return (
     <div className={appData.theme === "dark" ? "dark" : "light"}>
       <div className="header-container">
         {tabs.map((t, index) => (
           <div
-            onClick={() => setActiveTab(index)}
+            onClick={() => onClickHandler(index)}
             key={index}
             className="header"
           >
@@ -44,7 +54,15 @@ export default TabForm = () => {
         ))}
       </div>
       <div className="display-form">
-        <ActiveTabComponent data={appData} setData={setAppData} />
+        <ActiveTabComponent
+          data={appData}
+          setData={setAppData}
+          setError={setErrorMessage}
+          showError={showError}
+        />
+      </div>
+      <div>
+        {activeTab === tabs.length - 1 ? <button>submit</button> : <></>}
       </div>
     </div>
   );
