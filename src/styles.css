@@ -33,3 +33,10 @@
   background-color: #fff;
   color: #000;
 }
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 10px;
+}
